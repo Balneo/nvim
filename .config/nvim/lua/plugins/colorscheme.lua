@@ -54,5 +54,15 @@ return {
         lazy = false,
         priority = 1000,
     },
+    {
+        "Aejkatappaja/sora",
+        lazy = false,
+        priority = 1000,
+        opts = {},
+        config = function(_, opts)
+          require("sora").setup(opts)
+          -- vim.cmd.colorscheme("sora")
+      end,
+    },
 }
 -- vim: ts=2 sts=2 sw=2 et

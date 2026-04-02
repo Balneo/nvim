@@ -9,9 +9,6 @@ require("configs.lspconfig")
 require("configs.colorscheme")
 require("configs.terminal")
 
-require("overseer").setup()
-
-
 vim.filetype.add({
     extension = {
         ["http"] = "http",
