@@ -12,8 +12,6 @@ map("i", "<C-l>", "<Right>", { desc = "move right" })
 map("i", "<C-j>", "<Down>", { desc = "move down" })
 map("i", "<C-k>", "<Up>", { desc = "move up" })
 map("i", "<C-d>", "<BS>", { desc = "backspace" })
--- map("i", "jk", "<ESC>")
--- map("i", "kj", "<ESC>")
 
 -- Window navigation
 map("n", "<C-h>", "<C-w>h", { desc = "switch window left" })
