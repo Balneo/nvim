@@ -1,28 +1,37 @@
 local function run_current_file()
-  local file = vim.fn.expand("%:p")
-  if file == "" then
-    vim.notify("No file to run", vim.log.levels.WARN)
-    return
-  end
+    local file = vim.fn.expand("%:p")
+    if file == "" then
+        vim.notify("No file to run", vim.log.levels.WARN)
+        return
+    end
 
-  local ft = vim.bo.filetype
-  local cmd
+    local ft = vim.bo.filetype
+    local runner = {
+        python = "python3",
+        bash = "bash",
+        sh = "bash",
+        lua = "lua",
+        javascript = "node",
+        c = nil, -- handled separately
+    }
 
-  if ft == "python" then
-    cmd = "python3 " .. file
-  elseif ft == "bash" or ft == "sh" then
-    cmd = "bash " .. file
-  elseif ft == "lua" then
-    cmd = "lua " .. file
-  elseif ft == "javascript" then
-    cmd = "node " .. file
-  else
-    vim.notify("No runner for filetype: " .. ft, vim.log.levels.WARN)
-    return
-  end
+    if ft == "c" then
+        local out = file:gsub("%.c$", "")
+        local args = vim.fn.input("Args: ")
+        vim.cmd("split | resize 15 | terminal gcc -o " .. out .. " " .. file .. " && " .. out .. " " .. args)
+        vim.cmd("startinsert")
+        return
+    end
 
-  vim.cmd("split | resize 15 | terminal " .. cmd)
-  vim.cmd("startinsert")
+    local bin = runner[ft]
+    if not bin then
+        vim.notify("No runner for filetype: " .. ft, vim.log.levels.WARN)
+        return
+    end
+
+    local args = vim.fn.input("Args: ")
+    vim.cmd("split | resize 15 | terminal " .. bin .. " " .. file .. " " .. args)
+    vim.cmd("startinsert")
 end
 
 vim.keymap.set("n", "<leader>rf", run_current_file, {
