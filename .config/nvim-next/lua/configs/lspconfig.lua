@@ -45,6 +45,8 @@ local servers = {
     "emmet_language_server",
     "ts_ls",
     "texlab",
+    "yamlls",
+    "ruff",
 }
 
 vim.lsp.config("marksman", {
@@ -71,11 +73,6 @@ vim.lsp.config("yamlls", {
     settings = {
         yaml = {
             schemas = {
-                -- GitHub Actions
-                -- ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-                -- Kubernetes
-                -- ["https://json.schemastore.org/kubernetes.json"] = "k8s/*.yaml",
-                -- Docker Compose
                 ["https://raw.githubusercontent.com/compose-spec/compose-go/master/schema/compose-spec.json"] = {
                     "docker-compose.yml",
                     "docker-compose.yaml",
@@ -102,4 +99,3 @@ vim.lsp.config("yamlls", {
 for _, lsp in ipairs(servers) do
     vim.lsp.enable(lsp)
 end
-
