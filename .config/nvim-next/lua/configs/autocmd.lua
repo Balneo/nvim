@@ -1,12 +1,3 @@
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "http",
-    callback = function()
-        vim.keymap.set({ "n", "v" }, "<CR>", function()
-            require("kulala").run()
-        end, { desc = "Send request (Kulala)", buffer = true })
-    end,
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
         local bufnr = args.buf

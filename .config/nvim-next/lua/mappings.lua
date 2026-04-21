@@ -27,7 +27,6 @@ end, { desc = "Format file" })
 -- LSP mappings
 map("n", "<leader>ds", vim.diagnostic.setloclist, { desc = "LSP diagnostic loclist" })
 map("n", "<leader>rn", vim.lsp.buf.rename, { desc = "LSP rename" })
-map({ "n", "x" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 
 -- LSP navigation (fzf-lua)
 map("n", "grr", fzf.lsp_references, { desc = "LSP References" })
@@ -39,7 +38,7 @@ map("n", "<leader>ss", fzf.lsp_document_symbols, { desc = "LSP Symbols (current 
 
 -- Find (fzf-lua)
 map("n", "<leader>ff", fzf.files, { desc = "Find files" })
-map("n", "<leader>fg", fzf.live_grep, { desc = "Live grep" })
+map("n", "<leader>fg", fzf.grep_project, { desc = "Live grep" })
 map("n", "<leader>fo", fzf.oldfiles, { desc = "Recent files" })
 map("n", "<leader>fh", fzf.helptags, { desc = "Find help" })
 map("n", "<leader>fk", fzf.keymaps, { desc = "Find keymaps" })

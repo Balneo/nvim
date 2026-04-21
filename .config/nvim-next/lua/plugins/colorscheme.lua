@@ -1,68 +1,48 @@
 return {
     {
         "folke/tokyonight.nvim",
-        priority = 1000,
+        lazy = true,
         config = function()
-            ---@diagnostic disable-next-line: missing-fields
             require("tokyonight").setup({
                 styles = {
-                    comments = { italic = false }, -- Disable italics in comments
+                    comments = { italic = false },
                 },
             })
         end,
     },
     {
         "Skardyy/makurai-nvim",
-        lazy = false,
+        lazy = true,
         config = function()
             require("makurai").setup({
-                transparent = false, -- removes the bg color
+                transparent = false,
             })
         end,
     },
     {
-      "EdenEast/nightfox.nvim",
-      lazy = false,
-      priority = 1000,
-      config = function()
-        require("nightfox").setup({
-          options = {
-            transparent = true,
-            styles = {
-              comments = "italic",
-              keywords = "bold",
-              functions = "italic,bold",
-              types = "italic",
-            },
-          },
-        })
-        -- 🌈 Set your default theme here
-        vim.cmd.colorscheme("carbonfox")
-      end,
+        "EdenEast/nightfox.nvim",
+        lazy = true,
+        config = function()
+            require("nightfox").setup({
+                options = {
+                    transparent = true,
+                    styles = {
+                        comments = "italic",
+                        keywords = "bold",
+                        functions = "italic,bold",
+                        types = "italic",
+                    },
+                },
+            })
+        end,
     },
-    {
-        "rktjmp/lush.nvim",
-    },
-    { "catppuccin/nvim", lazy = false, name = "catppuccin", priority = 1000 },
-    {
-        "neanias/everforest-nvim",
-        lazy = false,
-        priority = 1000,
-    },
-    {
-        "Everblush/everblush.nvim",
-        lazy = false,
-        priority = 1000,
-    },
+    { "rktjmp/lush.nvim", lazy = true },
+    { "catppuccin/nvim", lazy = true, name = "catppuccin" },
+    { "neanias/everforest-nvim", lazy = true },
+    { "Everblush/everblush.nvim", lazy = true },
     {
         "Aejkatappaja/sora",
-        lazy = false,
-        priority = 1000,
+        lazy = true,
         opts = {},
-        config = function(_, opts)
-          require("sora").setup(opts)
-          -- vim.cmd.colorscheme("sora")
-      end,
     },
 }
--- vim: ts=2 sts=2 sw=2 et

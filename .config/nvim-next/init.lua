@@ -10,11 +10,4 @@ require("configs.lspconfig")
 require("configs.colorscheme")
 require("configs.terminal")
 
-vim.filetype.add({
-    extension = {
-        ["http"] = "http",
-    },
-})
-
-vim.treesitter.language.register("html", "typescriptreact")
 vim.treesitter.language.register('tsx', 'typescriptreact')
